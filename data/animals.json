@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "name": "squirrel",
+    "id": "9Esg",
+    "points": 2
+  },
+  {
+    "name": "coyote",
+    "id": "JRzd",
+    "points": 40
+  },
+  {
+    "name": "bat",
+    "id": "iqAT",
+    "points": 30
+  }
+]

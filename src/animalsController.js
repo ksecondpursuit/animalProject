@@ -23,25 +23,33 @@ const show = (animals, animalId) => {
         return 'Animal not found';
     }
     return `${animal.id}: ${animal.name} has ${animal.points} points`;
-
 };
 
-
 const destroy = (animals, animalId) => {
-    const index = animals.findIndex((animal) => animal.id === animalId)
-    if (index >-1) {
-
-    
-    animals.splice(index, 1)
-    inform("Animal removed")
-    return animals
+    const index = animals.findIndex((animal) => animal.id === animalId);
+    if (index > -1) {
+        animals.splice(index, 1);
+        inform("Animal removed");
+        return animals;
+    } else {
+        inform("Animal not found. No action taken.");
+        return animals;
     }
+};
+
+const edit = (animals, animalId, updatedAnimal) => {
+    const index = animals.findIndex(animal => animal.id === animalId);
     
-        else {
-    inform ("Animal not found no action taken")
-    return animals
+    if (index > -1) {
+        animals[index].name = updatedAnimal.name;
+        animals[index].points = updatedAnimal.points || Math.floor(Math.random() * 50);
+        
+        inform("Animal successfully updated");
+        return animals;
+    } else {
+        inform("Animal not found. No action.");
+        return animals;
     }
-}
+};
 
-
-module.exports = { create, index, show, destroy };
+module.exports = { create, index, show, destroy, edit };

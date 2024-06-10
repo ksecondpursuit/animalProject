@@ -1,7 +1,7 @@
 const inform = console.log;
 
 const { writeJSONFile, readJSONFile } = require('./src/helpers');
-const { create, index, show, destroy } = require('./src/animalsController');
+const { create, index, show, destroy, edit } = require('./src/animalsController');
 
 function run() {
     const action = process.argv[2];
@@ -22,14 +22,16 @@ function run() {
         inform(show(animals, animal));
         break;
       case "update":
-        inform(action, animal);
+        updatedAnimals = edit(animals, animal, process.argv[4])
+        writeToFile = true
         break;
       case "destroy":
-        updatedAnimals= destroy(animals, animal)
+        updatedAnimals= destroy(animals, animal, )
         writeToFile = true;
         break;
       case "score":
-        inform(action);
+        const score = animals.reduce((acc, currrentAnimal) => acc += currrentAnimal.points, 0)
+        inform (`Your grand total for all the animals is: ${score}`)
         break;
       default:
         inform("There was an error");
